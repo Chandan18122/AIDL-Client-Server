@@ -68,6 +68,7 @@ class AIDLSOService : Service() {
         }
 
         override fun createStudentFromBundleAIDL(bundle: Bundle?): String {
+            bundle?.classLoader = Student::class.java.classLoader
             val student = bundle?.getParcelable<Student>("student")
             return student?.let {
                 getStudentDetailsAIDL(it)
@@ -90,7 +91,7 @@ class AIDLSOService : Service() {
             aDouble: Double,
             aString: String?
         ): Boolean {
-            return true
+            return (anInt == anInt) && (aLong == aLong) && (aBoolean == aBoolean) && (aFloat == aFloat) && (aDouble == aDouble) && (aString == aString)
         }
     }
 }
